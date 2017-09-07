@@ -23,7 +23,7 @@ import jdk.nashorn.internal.parser.JSONParser;
  *
  * @author carlo
  */
-@WebServlet(name = "DownloadContatos", urlPatterns = {"/DownloadContatos"})
+@WebServlet(name = "DownloadContatos", urlPatterns = {"/downloadcontatos"})
 public class DownloadContatos extends HttpServlet {
 
     /**
