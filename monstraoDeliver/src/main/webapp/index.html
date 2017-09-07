@@ -83,7 +83,16 @@
 		<div class="demo-1">
 	        <div id="slider" class="sl-slider-wrapper">
 				<div class="sl-slider">
-					<div class="sl-slide bg-1" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+					<div class="sl-slide bg-2" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+						<div class="sl-slide-inner">
+							<div class="deco" data-icon=":("></div>
+							<h2>Esqueceu a marmita?</h2>
+							<blockquote><p>Não fique triste.
+								<br>Peça no Monstrão Delivery e fique forte para sua maromba diária.
+							</p><cite>Ban Ban</cite></blockquote>
+						</div>
+					</div>
+					<div class="sl-slide bg-1" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
 						<div class="sl-slide-inner">
 							<div class="deco" data-icon="Birrl"></div>
 							<h2>Monstrão Delivery</h2>
@@ -92,15 +101,6 @@
 								<br> Pra ajudar o maluco a não ficar doente.</p>
 								<!--<cite>Ralph Waldo Emerson</cite>-->
 							</blockquote>
-						</div>
-					</div>
-					<div class="sl-slide bg-2" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
-						<div class="sl-slide-inner">
-							<div class="deco" data-icon=":("></div>
-							<h2>Esqueceu a marmita?</h2>
-							<blockquote><p>Não fique triste.
-								<br>Peça no Monstrão Delivery e fique forte para sua maromba diária.
-							</p><cite>Albert Schweitzer</cite></blockquote>
 						</div>
 					</div>
 <!--
@@ -195,8 +195,9 @@
 					<div id="contact-form">
 						<form method="post" action="contatoServlet">
 							<fieldset>
-								<input tabindex="4" id="name" name="name" type="text" value="" class="span12" placeholder="Name do monstrão: ..." >
-								<input tabindex="2" id="email" name="email" type="text" value="" class="span12" placeholder="Email: ...">
+								<input tabindex="4" id="name"       name="name" type="text" value="" class="span12" placeholder="Name do monstrão: ..." >
+								<input tabindex="2" id="email"      name="email" type="text" value="" class="span12" placeholder="Email: ...">
+                                                                <input tabindex="2" id="telefone"   name="telefone" type="text" value="" class="span12" placeholder="Telefone: ...">
 								<!--
 								<input tabindex="3" id="www" name="www" type="text" value="" class="span12" placeholder="WWW: ...">
 								

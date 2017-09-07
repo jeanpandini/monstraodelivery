@@ -5,15 +5,24 @@
  */
 package com.jeanpandini.monstraodeliver;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -22,53 +31,48 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ContatoServlet", urlPatterns = {"/contatoServlet"})
 public class ContatoServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        salvaContato(request.getParameter("name"), request.getParameter("email"));
-        response.sendRedirect(request.getContextPath() + "/sucesso.html");
-//        try (PrintWriter out = response.getWriter()) {
-//            /* TODO output your page here. You may use following sample code. */
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet ContatoServlet</title>");            
-//            out.println("</head>");
-//            out.println("<body>");
-//            out.println("<h1> Birrrrrrrrrrrrrrl</h1>");
-//            String textoQueSeraEscrito = "Texto que sera escrito.";  
-//          
-//          
-//            out.print("<h4>Não vai dar "+ request.getParameter("nome") +" ?????????? <br> - 'Não vai dar é o #@#$@. Sai de casa pedi no monstrão delivery e comi pra ca@#$%$'</h4>");
-//            out.println("</body>");
-//            out.println("</html>");
-//            
-//             
-//        }
+        boolean save = salvaContato(request.getParameter("name"), request.getParameter("email"), request.getParameter("telefone"));
+        if (save) {
+            response.sendRedirect(request.getContextPath() + "/sucesso.html");
+        } else {
+            response.sendRedirect(request.getContextPath() + "/erro.html");
+        }
     }
 
-    private void salvaContato(String nome, String email) {
-        FileWriter arquivo;
-
-        try {
-            arquivo = new FileWriter(new File("contatos/" + email + ".txt"));
-            arquivo.write("nome:" + nome +" ");
-            arquivo.write("email:" + email);
-            arquivo.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+    private boolean salvaContato(@NotNull String nome, @NotNull String email, @NotNull String telefone) {
+        if (nome.isEmpty() || email.isEmpty() || telefone.isEmpty()) {
+            return false;
         }
+        try {
+            JsonElement element;
+            element = new JsonParser().parse(new FileReader(Constants.FILE_NAME));
+
+            JsonArray array;
+            if (element.isJsonNull()) {
+                array = new JsonArray();
+            } else {
+                array = element.getAsJsonArray();
+            }
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("nome", nome);
+            jsonObject.addProperty("email", email);
+            jsonObject.addProperty("telefone", telefone);
+            array.add(jsonObject);
+            File file = new File(Constants.FILE_NAME);
+            FileWriter writer;
+            writer = new FileWriter(file);
+            writer.write(array.toString());
+            writer.close();
+            return true;
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ContatoServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ContatoServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
