@@ -47,23 +47,21 @@ public class ContatoServlet extends HttpServlet {
             return false;
         }
         try {
-            JsonElement element;
-            element = new JsonParser().parse(new FileReader(Constants.FILE_NAME));
-
-            JsonArray array;
-            if (element.isJsonNull()) {
-                array = new JsonArray();
-            } else {
-                array = element.getAsJsonArray();
+            File file = new File(Constants.FILE_NAME);
+            JsonArray array = new JsonArray();
+            if (file.exists()) {
+                JsonElement element = new JsonParser().parse(new FileReader(file));
+                if (!element.isJsonNull()) {
+                    array = element.getAsJsonArray();
+                }
             }
+
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("nome", nome);
             jsonObject.addProperty("email", email);
             jsonObject.addProperty("telefone", telefone);
             array.add(jsonObject);
-            File file = new File(Constants.FILE_NAME);
-            FileWriter writer;
-            writer = new FileWriter(file);
+            FileWriter writer = new FileWriter(file);
             writer.write(array.toString());
             writer.close();
             return true;
