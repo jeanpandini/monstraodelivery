@@ -16,4 +16,8 @@
 --
 
 -- You can use this file to load seed data into the database using SQL statements
-insert into Registrant(id, name, email, phone_number) values (0, 'John Smith', 'john.smith@mailinator.com', '2125551212') 
+insert into Registrant(id, name, email, phone_number) values (0, 'John Smith', 'john.smith@mailinator.com', '2125551212');
+
+insert into Monstrao(id, name, email, telefone, data_nascimento) values (1, 'Luan Menegas', 'luan.menegas@bodybuilder.com', '2125551212', '1989-01-01');
+
+insert into Enderecos(id, rua, numero, bairro, municipio, uf, cep, monstrao_id) values (1, 'Rua Menegas', 547, 'Batata doce', 'Shark City', 'SC',12345678, 1);
