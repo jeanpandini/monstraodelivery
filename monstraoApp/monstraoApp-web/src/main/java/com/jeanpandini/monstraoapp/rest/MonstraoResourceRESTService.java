@@ -7,11 +7,9 @@ package com.jeanpandini.monstraoapp.rest;
 
 import com.jeanpandini.monstraoapp.data.MonstraoException;
 import com.jeanpandini.monstraoapp.data.MonstraoRepository;
-import com.jeanpandini.monstraoapp.model.Monstrao;
-import java.util.Collection;
+import com.jeanpandini.monstraoapp.model.Monstroes;
 import java.util.Collections;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -40,7 +38,7 @@ public class MonstraoResourceRESTService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Monstrao> buscaTodos() {
+    public List<Monstroes> buscaTodos() {
         try {
             return monstraoRepository.getAll();
         } catch (MonstraoException ex) {
@@ -52,14 +50,14 @@ public class MonstraoResourceRESTService {
     @GET
     @Path("{id:[0-9][0-9]*}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Monstrao buscaPorId(@PathParam("id") Long id) {
+    public Monstroes buscaPorId(@PathParam("id") Long id) {
         return monstraoRepository.get(id);
     }
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response criarMonstrao(Monstrao monstrao) {
+    public Response criarMonstrao(Monstroes monstrao) {
         return Response.status(Response.Status.CREATED).entity(monstraoRepository.persist(monstrao)).build();
     }
 

@@ -12,15 +12,15 @@ import java.util.List;
  * @author carlo
  * @param <T>
  */
-public interface RepositoryOperations <T> {
+public interface RepositoryOperations<T> {
 
     T get(Long id);
-    
+
     List<T> get(String query) throws MonstraoException;
-        
+
     T persist(T entity);
-    
+
     T upDate(T entity);
-    
+
     void remove(Long id);
 }

@@ -5,8 +5,8 @@
  */
 package com.jeanpandini.monstraoapp.model;
 
+import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
@@ -16,8 +16,10 @@ import javax.persistence.MappedSuperclass;
  * @author carlo
  */
 @MappedSuperclass
-public abstract class AbstractEntity {
-    
+public abstract class AbstractEntity implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue
     private Long id;
@@ -51,7 +53,4 @@ public abstract class AbstractEntity {
         final AbstractEntity other = (AbstractEntity) obj;
         return true;
     }
-    
-    
-    
 }

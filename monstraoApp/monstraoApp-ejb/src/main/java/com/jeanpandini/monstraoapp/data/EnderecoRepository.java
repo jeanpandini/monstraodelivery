@@ -5,7 +5,7 @@
  */
 package com.jeanpandini.monstraoapp.data;
 
-import com.jeanpandini.monstraoapp.model.Monstroes;
+import com.jeanpandini.monstraoapp.model.Enderecos;
 import java.util.List;
 import javax.ejb.Stateless;
 
@@ -14,14 +14,14 @@ import javax.ejb.Stateless;
  * @author carlo
  */
 @Stateless
-public class MonstraoRepository extends Repository<Monstroes> {
+public class EnderecoRepository extends Repository<Enderecos> {
 
-    public MonstraoRepository() {
-        super(Monstroes.class);
+    public EnderecoRepository() {
+        super(Enderecos.class);
     }
 
-    public List<Monstroes> getAll() throws MonstraoException {
-        return super.get(" SELECT m FROM Monstrao m ");
+    public List<Enderecos> getAll() throws MonstraoException {
+        return super.get(" SELECT m FROM Enderecos m ");
     }
 
 }

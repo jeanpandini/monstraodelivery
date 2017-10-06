@@ -5,7 +5,7 @@
  */
 package com.jeanpandini.monstraoapp.data;
 
-import com.jeanpandini.monstraoapp.model.Monstroes;
+import com.jeanpandini.monstraoapp.model.Pedidos;
 import java.util.List;
 import javax.ejb.Stateless;
 
@@ -14,14 +14,13 @@ import javax.ejb.Stateless;
  * @author carlo
  */
 @Stateless
-public class MonstraoRepository extends Repository<Monstroes> {
+public class PedidosRepository extends Repository<Pedidos> {
 
-    public MonstraoRepository() {
-        super(Monstroes.class);
+    public PedidosRepository() {
+        super(Pedidos.class);
     }
 
-    public List<Monstroes> getAll() throws MonstraoException {
-        return super.get(" SELECT m FROM Monstrao m ");
+    public List<Pedidos> getAll() throws MonstraoException {
+        return super.get(" SELECT m FROM Pedidos m ");
     }
-
 }

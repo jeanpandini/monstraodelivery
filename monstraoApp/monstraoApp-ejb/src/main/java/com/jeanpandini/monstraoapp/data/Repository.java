@@ -6,11 +6,12 @@
 package com.jeanpandini.monstraoapp.data;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import org.hibernate.validator.internal.util.logging.Log;
 
 /**
  *
@@ -21,6 +22,9 @@ public abstract class Repository<T> implements RepositoryOperations<T> {
 
     @Inject
     private EntityManager em;
+
+    @Inject
+    private Logger logger;
 
     private Class<T> type;
 
@@ -36,6 +40,7 @@ public abstract class Repository<T> implements RepositoryOperations<T> {
         try {
             return em.createQuery(query).getResultList();
         } catch (Exception e) {
+            logger.log(Level.SEVERE, e.getMessage(), e);
             throw new MonstraoException("Birlll");
         }
     }
