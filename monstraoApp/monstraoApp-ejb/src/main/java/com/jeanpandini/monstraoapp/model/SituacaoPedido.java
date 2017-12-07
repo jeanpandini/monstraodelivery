@@ -5,12 +5,14 @@
  */
 package com.jeanpandini.monstraoapp.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 
 /**
  *
  * @author carlo
  */
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum SituacaoPedido implements Serializable {
     SOLICITADO("S", "Solicitado"),
     AGENDADO("A", "Agendado"),
@@ -32,6 +34,15 @@ public enum SituacaoPedido implements Serializable {
 
     public String getDescricao() {
         return descricao;
+    }
+
+    public static SituacaoPedido getEnum(String value) {
+        for (SituacaoPedido v : values()) {
+            if (v.getValor().equalsIgnoreCase(value)) {
+                return v;
+            }
+        }
+        throw new IllegalArgumentException("Situação do pedido inválida.");
     }
 
 }

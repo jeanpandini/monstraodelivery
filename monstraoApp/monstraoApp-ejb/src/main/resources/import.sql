@@ -16,8 +16,11 @@
 --
 
 -- You can use this file to load seed data into the database using SQL statements
-insert into Registrant(id, name, email, phone_number) values (0, 'John Smith', 'john.smith@mailinator.com', '2125551212');
 
 insert into Monstroes(id, name, email, telefone, data_nascimento) values (0, 'Luan Menegas', 'luan.menegas@bodybuilder.com', '2125551212', '1989-01-01');
 
 insert into Enderecos(id, rua, numero, bairro, municipio, uf, cep, monstrao_id) values (0, 'Rua Menegas', 547, 'Batata doce', 'Shark City', 'SC',12345678, 0);
+
+INSERT INTO public.estabelecimentos(id, documento, nome, telefone) VALUES (0, '12345678910', 'Casa da mãe Joana', '4898875412');
+
+INSERT INTO pedidos(id, dh_entrega, dh_solicitacao, observacao, situacao, endereco_id, monstrao_id) VALUES (0, '2001-01-01 10:00', '2017-01-01 15:00', 'Eu quero cafeeeee', 'E', 0,0);

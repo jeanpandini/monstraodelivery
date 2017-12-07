@@ -5,8 +5,8 @@
  */
 package com.jeanpandini.monstraoapp.rest;
 
-import com.jeanpandini.monstraoapp.model.Monstrao;
-import com.jeanpandini.monstraoapp.service.MonstraoService;
+import com.jeanpandini.monstraoapp.model.Estabelecimento;
+import com.jeanpandini.monstraoapp.service.EstabelecimentoService;
 import com.jeanpandini.monstraoapp.util.AbstractCrudService;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -16,16 +16,16 @@ import javax.ws.rs.Path;
  *
  * @author carlo
  */
-@Path("/monstrao")
+@Path("/estabelecimento")
 @RequestScoped
-public class MonstraoResourceRESTService extends AbstractCrudResourceRESTService<Monstrao> {
+public class EstabelecimentoResourceRESTService extends AbstractCrudResourceRESTService<Estabelecimento> {
 
     @Inject
-    private MonstraoService monstraoService;
+    private EstabelecimentoService estabelecimentoService;
 
     @Override
-    protected AbstractCrudService<Monstrao> getService() {
-        return monstraoService;
+    protected AbstractCrudService<Estabelecimento> getService() {
+        return estabelecimentoService;
     }
 
 }
