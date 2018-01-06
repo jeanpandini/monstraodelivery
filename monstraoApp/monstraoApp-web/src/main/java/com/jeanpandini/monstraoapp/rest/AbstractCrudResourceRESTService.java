@@ -50,7 +50,7 @@ public abstract class AbstractCrudResourceRESTService<T extends AbstractEntity> 
     }
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response update(T entity, @PathParam("id") Long id) {

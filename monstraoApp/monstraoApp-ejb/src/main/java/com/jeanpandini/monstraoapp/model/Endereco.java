@@ -59,7 +59,7 @@ public class Endereco extends AbstractEntity {
 
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(columnDefinition = "monstrao_id", foreignKey = @ForeignKey(name = "fk_enderecos_mosntroes"))
+    @JoinColumn(columnDefinition = "monstrao_id", foreignKey = @ForeignKey(name = "fk_enderecos_monstroes"))
     @JsonIgnore
     private Monstrao monstrao;
 

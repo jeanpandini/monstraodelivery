@@ -3,6 +3,7 @@ package com.jeanpandini.monstraoapp.model;
 import com.fasterxml.jackson.annotation.JsonView;
 import java.sql.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -45,7 +46,7 @@ public class Monstrao extends AbstractEntity {
     @Column(name = "data_nascimento")
     private Date dataNascimento;
 
-    @OneToMany(mappedBy = "monstrao", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "monstrao", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonView
     private List<Endereco> enderecos;
 
