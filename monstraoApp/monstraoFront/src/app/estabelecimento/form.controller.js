@@ -1,9 +1,9 @@
 export default class FormController {
     
-        constructor($stateParams, $state, PedidoServico) {
+        constructor($stateParams, $state, EstabeleciemntoServico) {
             this.record = {};
             this.title = 'Adicionando registro';
-            this._service = PedidoServico
+            this._service = EstabeleciemntoServico
             if ($stateParams.id) {
                 this.title = 'Editando registro';
                 this._service.findById($stateParams.id)
@@ -17,9 +17,9 @@ export default class FormController {
         save() {
             this._service.save(this.record)
                 .then(resp => {
-                    this._state.go('pedido.list')
+                    this._state.go('estabelecimento.list')
                 })
         }
     }
     
-    FormController.$inject = ['$stateParams', '$state', 'PedidoServico']
+    FormController.$inject = ['$stateParams', '$state', 'EstabeleciemntoServico']

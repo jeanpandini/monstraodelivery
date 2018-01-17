@@ -1,11 +1,11 @@
 import AbstractCrudService from "../abstract.crud.service";
 
-export default class ProdutoServico extends AbstractCrudService {
+export default class PedidosServico extends AbstractCrudService {
 
   constructor($http) {
-    super($http, 'http://localhost:8080/Pedidex-web/api/produtos')
+    super($http, 'http://localhost:8080/monstraoApp-web/api/pedido')
   }
 
 }
 
-ProdutoServico.$inject = ['$http']
+PedidosServico.$inject = ['$http']

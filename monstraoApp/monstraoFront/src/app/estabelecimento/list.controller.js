@@ -1,9 +1,9 @@
 export default class ListController {
     
-        constructor(PedidoServico) {
+        constructor(EstabeleciemntoServico, Notification) {
             this.filter = ''
             this.records = []
-            this._service = PedidoServico
+            this._service = EstabeleciemntoServico
             this.load()
         }
     
@@ -21,8 +21,9 @@ export default class ListController {
             this._service.remove(id)
                 .then(response => {
                     this.load()
-                })
+                }).catch(erro => {
+                }) 
         }
     }
     
-    ListController.$inject = ['PedidoServico']
+    ListController.$inject = ['EstabeleciemntoServico', 'Notification']

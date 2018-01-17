@@ -24,7 +24,6 @@ public class Pedido extends AbstractEntity {
     @Column(name = "dh_solicitacao")
     private Timestamp dhSolicitacao;
 
-    @NotNull
     @Column(name = "dh_entrega")
     private Timestamp dhEntrega;
 

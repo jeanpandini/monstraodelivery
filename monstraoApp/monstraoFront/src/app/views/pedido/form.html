@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="row justify-content-sm-center">
+        <div class="col-sm-8">
+            <h2 class="title">{{vm.title}}</h2>
+            <form>                
+                <div class="form-group">
+                    <label>Dh. Solic</label>
+                    <input type="text" ng-model="vm.record.dhSolicitacao" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Dh. Entrega</label>
+                    <input type="text" ng-model="vm.record.dhEntrega" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Telefone</label>
+                    <input type="text" ng-model="vm.record.telefone" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Data de nascimento</label>
+                    <input type="text" ng-model="vm.record.dataNascimento" class="form-control">
+                </div>
+                <button ng-click="vm.save()" type="button" class="btn btn-primary btn-lg">Salvar Registro</button>
+                <a ui-sref="pedido.list" class="btn btn-danger">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
